@@ -6,20 +6,19 @@ function App() {
   return (
     <div className="container">
       <div className="grid-area item-1">
-        <span>Text 1</span>
-        <span>Text 2</span>
+        <span>Short Make</span>
+        <span>Short Miss</span>
       </div>
       <div className="grid-area item-2">
-        <span>Text 1</span>
-        <span>Text 2</span>
+        <span>Medium Make</span>
+        <span>Medium Miss</span>
       </div>
       <div className="grid-area item-3">
-        <span>Text 1</span>
-        <span>Text 2</span>
+        <span>Long Make</span>
+        <span>Long Miss</span>
       </div>
       <div className="grid-area item-4">
-        <span>Text 1</span>
-        <span>Text 2</span>
+        <span>Submit</span>
       </div>
     </div>
   );

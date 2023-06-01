@@ -1,38 +1,47 @@
-.App {
-  text-align: center;
+/* Apply CSS reset to remove default browser styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Create a grid container */
+.container {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr .25fr; /* Create four equal rows */
+  grid-template-columns: 1fr; /* Single column */
+  height: 100vh; /* Make the container full height of the viewport */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Define styles for each grid area */
+.grid-area {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  background-color: #f1f1f1; /* Example background color */
+  padding: 20px; /* Example padding */
+  border: 1px solid #ccc; /* Example border */
 }
 
-.App-link {
-  color: #61dafb;
+/* Styles for the text elements */
+.grid-area span {
+  margin: 20px 0; /* Adjust vertical spacing as needed */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Specify which grid area each item should occupy */
+.item-1 {
+  grid-row: 1 / span 1; /* Start at row 1 and span 1 row */
+}
+
+.item-2 {
+  grid-row: 2 / span 1; /* Start at row 2 and span 1 row */
+}
+
+.item-3 {
+  grid-row: 3 / span 1; /* Start at row 3 and span 1 row */
+}
+
+.item-4 {
+  grid-row: 4 / span 1; /* Start at row 4 and span 1 row */
 }

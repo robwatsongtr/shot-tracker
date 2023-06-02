@@ -30,18 +30,51 @@
 }
 
 /* Specify which grid area each item should occupy */
-.item-1 {
+.short {
   grid-row: 1 / span 1; /* Start at row 1 and span 1 row */
 }
 
-.item-2 {
+.medium {
   grid-row: 2 / span 1; /* Start at row 2 and span 1 row */
 }
 
-.item-3 {
+.long {
   grid-row: 3 / span 1; /* Start at row 3 and span 1 row */
 }
 
-.item-4 {
+.submit {
   grid-row: 4 / span 1; /* Start at row 4 and span 1 row */
+}
+
+
+
+.count {
+  margin-bottom: 2rem;
+  text-align: center;
+  display: flex;
+  margin-left: 10rem;
+}
+.count h3 {
+  line-height: 8.6rem;
+  margin-right: 1rem;
+}
+.count h1 {
+  font-size:5em;
+  margin-top: 2rem;
+}
+.buttons button {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  border: none;
+  margin: 0 2rem;
+  font-size: 5em;
+  box-shadow: 0 4px 32px 0 rgba(10,14,29,.02), 0 8px 64px 0 rgba(10,14,29,.08);
+  cursor: pointer;
+}
+.buttons button:hover{
+  font-size: 7em;
+}
+.buttons button:focus{
+  outline: 0;
 }

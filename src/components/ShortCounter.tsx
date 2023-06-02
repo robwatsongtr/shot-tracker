@@ -1,7 +1,14 @@
 
 import './../App.css';
 
-export const ShortCounter = () => {
+interface ShortCounterProps {
+  incShortCount: () => void;
+  decShortCount: () => void
+  shortCount: number
+}
+
+export const ShortCounter: React.FC<ShortCounterProps> = 
+  ({ incShortCount, decShortCount, shortCount }) => {
   return (
     <div className="grid-area short">
       <span>Short Make</span>

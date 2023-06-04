@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './../App.css';
 
 interface CounterProps {
@@ -10,16 +10,16 @@ interface CounterProps {
 export const Counter: React.FC<CounterProps> = ({ title, count = 0, onUpdate }) => {
   const [counter, setCounter] = useState(count);
 
-  const increment = (): void => {
+  function increment(): void {
     const newCounter = counter + 1;
     setCounter(newCounter);
     if (onUpdate) {
       onUpdate(newCounter);
     }
-  };
+  }
 
   const decrement = (): void => {
-    const newCounter = counter - 1 < 0 ? 0 : counter - 1;
+    const newCounter = (counter - 1 < 0) ? 0 : counter - 1;
     setCounter(newCounter);
     if (onUpdate) {
       onUpdate(newCounter);

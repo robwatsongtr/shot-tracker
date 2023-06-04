@@ -21,10 +21,20 @@
   align-items: center;
   background-color: #f1f1f1; /* Example background color */
   padding: 20px; /* Example padding */
-  border: 1px solid #ccc; /* Example border */
+  
+  text-align: center
 }
 
 /* Styles for the text elements */
+
+.grid-area h4 {
+  margin: 20px 0; /* Adjust vertical spacing as needed */
+}
+
+.grid-area h2 {
+  margin: 0; /* Remove top and bottom margin for h2 */
+}
+
 .grid-area span {
   margin: 20px 0; /* Adjust vertical spacing as needed */
 }
@@ -47,8 +57,6 @@
 }
 
 
-
-
 .buttons button {
   width: 3rem;
   height: 3rem;
@@ -56,7 +64,7 @@
   border: none;
   margin: 0 2rem;
   font-size: 2em;
-  box-shadow: 0 4px 32px 0 rgba(10,14,29,.02), 0 8px 64px 0 rgba(10,14,29,.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), 0 8px 32px rgba(0, 0, 0, 0.1); /* Modify the rgba values to make the shadow darker */
   cursor: pointer;
 }
 

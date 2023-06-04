@@ -48,33 +48,18 @@
 
 
 
-.count {
-  margin-bottom: 2rem;
-  text-align: center;
-  display: flex;
-  margin-left: 10rem;
-}
-.count h3 {
-  line-height: 8.6rem;
-  margin-right: 1rem;
-}
-.count h1 {
-  font-size:5em;
-  margin-top: 2rem;
-}
+
 .buttons button {
-  width: 10rem;
-  height: 10rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   border: none;
   margin: 0 2rem;
-  font-size: 5em;
+  font-size: 2em;
   box-shadow: 0 4px 32px 0 rgba(10,14,29,.02), 0 8px 64px 0 rgba(10,14,29,.08);
   cursor: pointer;
 }
-.buttons button:hover{
-  font-size: 7em;
-}
+
 .buttons button:focus{
   outline: 0;
 }

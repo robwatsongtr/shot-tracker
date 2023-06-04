@@ -2,27 +2,30 @@
 import './../App.css';
 
 interface ShortCounterProps {
-  incShortCount: () => void;
-  decShortCount: () => void
-  shortCount: number
+  incShortMake: () => void;
+  decShortMake: () => void
+  shortMake: number
+  incShortMiss: () => void;
+  decShortMiss: () => void
+  shortMiss: number
 }
 
 export const ShortCounter: React.FC<ShortCounterProps> = 
-  ({ incShortCount, decShortCount, shortCount }) => {
+  ({ incShortMake, decShortMake, shortMake, incShortMiss, decShortMiss, shortMiss }) => {
   return (
-    <div className="grid-area short">
-      <span>
-        <div className="count">
-          <h3>Short Count:</h3>
-          <h1>{shortCount}</h1>
-        </div>
-      </span>
-      <span>
-        <div className="buttons">
-          <button onClick={incShortCount}> + </button>
-          <button onClick={decShortCount}> - </button>
-        </div>
-      </span>
+    <div className="grid-area short">      
+      <h4>Short Make:</h4> 
+      <h2>{shortMake}</h2>
+      <div className="buttons">
+        <button onClick={incShortMake}> + </button>
+        <button onClick={decShortMake}> - </button>
+      </div>
+      <h4>Short Miss:</h4> 
+      <h2>{shortMiss}</h2>
+      <div className="buttons">
+        <button onClick={incShortMiss}> + </button>
+        <button onClick={decShortMiss}> - </button>
+      </div>
     </div>
   )
 }

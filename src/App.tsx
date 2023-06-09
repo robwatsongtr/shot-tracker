@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+// App.tsx
 
+import React, { useState, useEffect } from 'react';
 import { Counter } from './components/Counter';
-
 import './App.css';
 
 
@@ -15,40 +15,30 @@ function App() {
   const [longMake, setlongMake] = useState(0);
   const [longMiss, setlongMiss] = useState(0);
 
-  // -----------------
+  
   const updateShortMake = (count: number) => {
     setShortMake(count);
-    console.log(`Short Make: ${shortMake}`)
   };
 
   const updateShortMiss = (count: number) => {
     setShortMiss(count);
-    console.log(`Short Miss: ${shortMiss}`)
   };
 
-  // ------------------
   const updateMediumMake = (count: number) => {
     setMediumMake(count);
-    console.log(`Medium Make: ${mediumMake}`)
   };
 
   const updateMediumMiss = (count: number) => {
     setMediumMiss(count);
-    console.log(`Medium Miss: ${mediumMiss}`)
   };
 
-  // ------------------
   const updateLongMake = (count: number) => {
     setlongMake(count) 
-    console.log(`Long Make: ${longMake}`)
   }
 
   const updateLongMiss = (count: number) => {
     setlongMiss(count) 
-    console.log(`Long Miss: ${longMake}`)
   }
-
-
 
   return (
     <div className="container">

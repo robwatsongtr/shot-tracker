@@ -18,7 +18,6 @@ function App() {
   
   const updateShortMake = (count: number) => {
     setShortMake(count);
-    console.log(`short make: ${shortMake}`)
   };
 
   const updateShortMiss = (count: number) => {

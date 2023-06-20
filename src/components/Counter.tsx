@@ -18,18 +18,12 @@ export const Counter: React.FC<CounterProps> = ({ title, count = 0, onUpdate }) 
 
   const increment = (): void => {
     const newCounter = counter + 1;
-    setCounter(newCounter);
-    if (onUpdate) {
-      onUpdate(newCounter);
-    }
+    setCounter(newCounter);  
   }
 
   const decrement = (): void => {
     const newCounter = (counter - 1 < 0) ? 0 : counter - 1;
     setCounter(newCounter);
-    if (onUpdate) {
-      onUpdate(newCounter);
-    }
   };
 
   return (

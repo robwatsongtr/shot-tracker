@@ -4,55 +4,88 @@ import React, { useState, useEffect } from 'react';
 import { Counter } from './components/Counter';
 import './App.css';
 
+export interface ICounterStateShort {
+  shortMake: number
+  shortMiss: number
+}
+
+export interface ICounterStateMedium {
+  mediumMake: number
+  mediumMiss: number 
+}
+
+export interface ICounterStateLong {
+  longMake: number
+  longMiss: number 
+}
 
 function App() {
-  const [shortMake, setShortMake] = useState(0);
-  const [shortMiss, setShortMiss] = useState(0);
 
-  const [mediumMake, setMediumMake] = useState(0);
-  const [mediumMiss, setMediumMiss] = useState(0);
+  const [ shortState, setShortState] = useState<ICounterStateShort>({
+    shortMake: 0,
+    shortMiss: 0
+  })
 
-  const [longMake, setlongMake] = useState(0);
-  const [longMiss, setlongMiss] = useState(0);
+  const [ mediumState, setMediumState] = useState<ICounterStateMedium>({
+    mediumMake: 0,
+    mediumMiss: 0
+  })
 
-  
-  const updateShortMake = (count: number) => {
-    setShortMake(count);
-  };
+  const [ longState, setLongState] = useState<ICounterStateLong>({
+    longMake: 0,
+    longMiss: 0
+  })
 
-  const updateShortMiss = (count: number) => {
-    setShortMiss(count);
-  };
-
-  const updateMediumMake = (count: number) => {
-    setMediumMake(count);
-  };
-
-  const updateMediumMiss = (count: number) => {
-    setMediumMiss(count);
-  };
-
-  const updateLongMake = (count: number) => {
-    setlongMake(count) 
+  const updateShortState = (newState: ICounterStateShort) => {
+    setShortState(newState)
   }
 
-  const updateLongMiss = (count: number) => {
-    setlongMiss(count) 
+  const updateMediumState = (newState: ICounterStateMedium) => {
+    setMediumState(newState)
   }
+
+  const updateLongState = (newState: ICounterStateLong) => {
+    setLongState(newState)
+  }
+
 
   return (
     <div className="container">
       <div className='grid-area short'>
-        <Counter title="Short Make" count={shortMake} onUpdate={updateShortMake} />
-        <Counter title="Short Miss" count={shortMiss} onUpdate={updateShortMiss} />
+        <Counter 
+          title="Short Make" 
+          count={shortState.shortMake} 
+          onUpdate={(count) => updateShortState({ ...shortState, shortMake: count })} 
+        />
+        <Counter 
+          title="Short Miss" 
+          count={shortState.shortMiss} 
+          onUpdate={(count) => updateShortState({ ...shortState, shortMiss: count })} 
+        />
       </div>
       <div className='grid-area medium'>
-        <Counter title="Medium Make" count={mediumMake} onUpdate={updateMediumMake} />
-        <Counter title="Medium Miss" count={mediumMiss} onUpdate={updateMediumMiss} />
+        <Counter 
+          title="Medium Make" 
+          count={mediumState.mediumMake} 
+          onUpdate={(count) => updateMediumState({ ...mediumState, mediumMake: count })} 
+        />
+        <Counter 
+          title="Medium Miss" 
+          count={mediumState.mediumMiss} 
+          onUpdate={(count) => updateMediumState({ ...mediumState, mediumMiss: count })} 
+        />
       </div>
       <div className='grid-area long'>
-        <Counter title="Long Make" count={longMake} onUpdate={updateLongMake} />
-        <Counter title="Long Miss" count={longMiss} onUpdate={updateLongMiss} />
+        <Counter 
+          title="Long Make" 
+          count={longState.longMake} 
+          onUpdate={(count) => updateLongState({ ...longState, longMake: count })} 
+        />
+        <Counter 
+          title="Long Miss" 
+          count={longState.longMiss} 
+          onUpdate={(count) => updateLongState({ ...longState, longMiss: count })} 
+        />
       </div>
       <div className="grid-area submit">
         <span>Submit</span>

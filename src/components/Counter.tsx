@@ -1,6 +1,6 @@
 //   /components/Counter.tsx
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './../App.css';
 
 interface CounterProps {
@@ -14,7 +14,8 @@ export const Counter: React.FC<CounterProps> = ({ title, count = 0, onUpdate }) 
 
   useEffect(() => {
     onUpdate?.(counter)
-  }, [counter, onUpdate])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [counter])
 
   const increment = (): void => {
     const newCounter = counter + 1;

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Counter } from './Counter';
 
-
 export interface ICounterStateShort {
   shortMake: number
   shortMiss: number
@@ -46,6 +45,9 @@ const MainPage = () => {
     setLongState(newState)
   }
 
+  console.log(shortState)
+  console.log(mediumState)
+  console.log(longState)
 
   return (
     <div className="container">

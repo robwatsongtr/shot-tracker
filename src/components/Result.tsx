@@ -6,15 +6,15 @@ interface ResultProps {
   longState: object
 }
 
-const ResultPage: React.FC<ResultProps> = ({ shortState, mediumState, longState }) => {
+const Result: React.FC<ResultProps> = ({ shortState, mediumState, longState }) => {
   console.log(shortState);
   console.log(mediumState);
   console.log(longState);
   return (
     <>
-      This is the Result Page 
+      This is the Result 
     </>
   )
 }
 
-export default ResultPage
+export default Result

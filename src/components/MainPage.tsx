@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Counter } from './Counter';
-import { Link } from 'react-router-dom';
-
+import Result from './Result'
 
 interface ICounterStateShort {
   shortMake: number
@@ -17,8 +16,6 @@ interface ICounterStateLong {
   longMake: number
   longMiss: number 
 }
-
-
 
 const MainPage = () => {
 
@@ -49,7 +46,6 @@ const MainPage = () => {
     setLongState(newState)
   }
 
-  
 
   return (
     <div className="container">
@@ -90,20 +86,9 @@ const MainPage = () => {
         />
       </div>
       <div className="grid-area submit">
-        <Link
-          to={
-            {
-              pathname: '/result',
-              state: {
-                shortState: shortState,
-                mediumState: mediumState,
-                longState: longState
-              }
-            } as any 
-          }
-        >
+       
           Go To Result 
-        </Link>
+        
       </div>
     </div>
   );

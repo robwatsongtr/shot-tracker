@@ -19,6 +19,8 @@ interface ICounterStateLong {
 
 const MainPage = () => {
 
+  const [ showResult, setShowResult ] = useState(false)
+
   const [ shortState, setShortState] = useState<ICounterStateShort>({
     shortMake: 0,
     shortMiss: 0
@@ -45,6 +47,11 @@ const MainPage = () => {
   const updateLongState = (newState: ICounterStateLong) => {
     setLongState(newState)
   }
+
+  const handleClick = () => {
+    setShowResult(true);
+  };
+
 
 
   return (
@@ -85,10 +92,15 @@ const MainPage = () => {
           onUpdate={ (count) => updateLongState({ ...longState, longMiss: count })} 
         />
       </div>
-      <div className="grid-area submit">
-       
-          Go To Result 
-        
+      <div className="grid-area submit"> 
+        <button onClick={handleClick}>Result</button>
+        { showResult && 
+          <Result 
+            sState={shortState}
+            mState={mediumState} 
+            lState={longState}
+          />
+        }
       </div>
     </div>
   );

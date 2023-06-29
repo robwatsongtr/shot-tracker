@@ -1,18 +1,18 @@
 import './../App.css';
 
 interface ResultProps {
-  shortState: object
-  mediumState: object
-  longState: object
+  sState: object
+  mState: object
+  lState: object
 }
 
-const Result: React.FC<ResultProps> = ({ shortState, mediumState, longState }) => {
-  console.log(shortState);
-  console.log(mediumState);
-  console.log(longState);
+const Result: React.FC<ResultProps> = ({ sState, mState, lState }) => {
+  console.log(sState);
+  console.log(mState);
+  console.log(lState);
   return (
     <>
-      This is the Result 
+      This is the Result Page 
     </>
   )
 }

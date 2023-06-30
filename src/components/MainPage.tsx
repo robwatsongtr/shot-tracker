@@ -2,23 +2,22 @@ import React, { useState } from 'react';
 import { Counter } from './Counter';
 import Result from './Result'
 
-interface ICounterStateShort {
+export interface ICounterStateShort {
   shortMake: number
   shortMiss: number
 }
 
-interface ICounterStateMedium {
+export interface ICounterStateMedium {
   mediumMake: number
   mediumMiss: number 
 }
 
-interface ICounterStateLong {
+export interface ICounterStateLong {
   longMake: number
   longMiss: number 
 }
 
 const MainPage = () => {
-
   const [ showResult, setShowResult ] = useState(false)
 
   const [ shortState, setShortState] = useState<ICounterStateShort>({
@@ -52,8 +51,6 @@ const MainPage = () => {
     setShowResult(true);
   };
 
-
-
   return (
     <div className="container">
       <div className='grid-area short'>
@@ -61,23 +58,27 @@ const MainPage = () => {
           title="Short Make" 
           count={shortState.shortMake} 
           onUpdate={ (count) => updateShortState({ ...shortState, shortMake: count }) } 
+          
         />
         <Counter 
           title="Short Miss" 
           count={shortState.shortMiss} 
           onUpdate={ (count) => updateShortState({ ...shortState, shortMiss: count }) } 
+          
         />
       </div>
       <div className='grid-area medium'>
         <Counter 
           title="Medium Make" 
           count={mediumState.mediumMake} 
-          onUpdate={ (count) => updateMediumState({ ...mediumState, mediumMake: count }) } 
+          onUpdate={ (count) => updateMediumState({ ...mediumState, mediumMake: count }) }
+          
         />
         <Counter 
           title="Medium Miss" 
           count={mediumState.mediumMiss} 
-          onUpdate={ (count) => updateMediumState({ ...mediumState, mediumMiss: count }) } 
+          onUpdate={ (count) => updateMediumState({ ...mediumState, mediumMiss: count }) }
+          
         />
       </div>
       <div className='grid-area long'>
@@ -85,11 +86,13 @@ const MainPage = () => {
           title="Long Make" 
           count={longState.longMake} 
           onUpdate={ (count) => updateLongState({ ...longState, longMake: count }) } 
+          
         />
         <Counter 
           title="Long Miss" 
           count={longState.longMiss} 
           onUpdate={ (count) => updateLongState({ ...longState, longMiss: count })} 
+          
         />
       </div>
       <div className="grid-area submit"> 
@@ -101,6 +104,7 @@ const MainPage = () => {
             lState={longState}
           />
         }
+        <button onClick={ () => window.location.reload() }>Click to reload!</button>
       </div>
     </div>
   );

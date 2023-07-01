@@ -13,19 +13,22 @@ const Result: React.FC<ResultProps> = ({ sState, mState, lState }) => {
   
   const calcShort = (sState: ICounterStateShort)  => {
     const shortTotal = sState.shortMake + sState.shortMiss
-    const shortPercent = (sState.shortMake / shortTotal) * 100 
+    let shortPercent = (sState.shortMake / shortTotal) * 100 
+    if(isNaN(shortPercent)) shortPercent = 0 // if div by 0 return 0 
     return [ shortTotal, shortPercent ]
   }
 
   const calcMedium = (mState: ICounterStateMedium) => {
     const mediumTotal = mState.mediumMake + mState.mediumMiss
-    const mediumPercent = (mState.mediumMake / mediumTotal) * 100
+    let mediumPercent = (mState.mediumMake / mediumTotal) * 100
+    if(isNaN(mediumPercent)) mediumPercent = 0
     return [ mediumTotal, mediumPercent ]
   }
 
   const calcLong = (lState: ICounterStateLong) => {
     const longTotal = lState.longMake + lState.longMiss
-    const longPercent = (lState.longMake / longTotal) * 100
+    let longPercent = (lState.longMake / longTotal) * 100
+    if(isNaN(longPercent)) longPercent = 0
     return [ longTotal, longPercent ]
   }
 

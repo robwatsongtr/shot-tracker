@@ -18,6 +18,7 @@ interface IResultState {
   lTotal: number
   lPercent: number
   oTotal: number
+  date: string
 }
 
 const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
@@ -29,7 +30,8 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
     mPercent: 0,
     lTotal: 0,
     lPercent: 0,
-    oTotal: 0
+    oTotal: 0,
+    date: ''
   })
 
   const calcStats = (make: number, miss: number): [number, number] => {
@@ -43,6 +45,8 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
   const [ mediumTotal, mediumPercent] = calcStats(mState.mediumMake, mState.mediumMiss)
   const [ longTotal, longPercent ] = calcStats(lState.longMake, lState.longMiss);
   const overallTotal = shortTotal + mediumTotal + longTotal
+  const date = new Date()
+  const formattedDate = date.toLocaleString(); 
 
   useEffect( () => {
     setResultState({
@@ -52,10 +56,11 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
       mPercent: mediumPercent,
       lTotal: longTotal,
       lPercent: longPercent,
-      oTotal: overallTotal
+      oTotal: overallTotal,
+      date: formattedDate
     })
     }, [shortTotal, shortPercent, mediumTotal, mediumPercent, 
-      longPercent, longTotal, overallTotal]
+      longPercent, longTotal, overallTotal, formattedDate]
   )
 
   return (
@@ -77,6 +82,10 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
       <div>
         <br />
         Total Shots: {resultState.oTotal} 
+      </div>
+      <div>
+      <br/>
+       <h6>{resultState.date}</h6> 
       </div>
     </div>
   )

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Counter } from './Counter';
 import Result from './Result'
+import { Button } from '@mui/material';
 
 export interface ICounterStateShort {
   shortMake: number
@@ -96,7 +97,15 @@ const MainPage = () => {
         />
       </div>
       <div className="grid-area submit"> 
-        <button onClick={handleClick}>Result</button> <br/>
+        <Button 
+          variant="contained" 
+          onClick={handleClick}
+          size="small"
+          color="secondary"
+        >
+          Result
+        </Button> 
+        <br/>
         { showResult && 
           <Result 
             sState={shortState}
@@ -105,7 +114,13 @@ const MainPage = () => {
           />
         }
         <br/>
-        <button onClick={ () => window.location.reload() }>Click to Reset</button>
+        <Button 
+          variant="contained" 
+          size="small" 
+          onClick={ () => window.location.reload() }
+        > 
+          Click to Reset
+        </Button>
       </div>
     </div>
   );

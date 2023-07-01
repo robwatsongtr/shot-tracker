@@ -32,22 +32,27 @@ const Result: React.FC<ResultProps> = ({ sState, mState, lState }) => {
   const [ shortTotal, shortPercent ] = calcShort(sState)
   const [ mediumTotal, mediumPercent] = calcMedium(mState)
   const [ longTotal, longPercent ] = calcLong(lState)
+  const overallTotal = shortTotal + mediumTotal + longTotal
 
   return (
     <div>
       <div>
-          Total Short Shots: {shortTotal} <br/>
-          Short Percent: {shortPercent.toFixed(1)}%
+        Total Short Shots: {shortTotal} <br/>
+        Short Percent: {shortPercent.toFixed(1)}%
       </div>
       <div>
-          <br/>
-          Total Medium Shots: {mediumTotal} <br/>
-          Medium Percent: {mediumPercent.toFixed(1)}%
+        <br/>
+        Total Medium Shots: {mediumTotal} <br/>
+        Medium Percent: {mediumPercent.toFixed(1)}%
       </div>
       <div>
-          <br />
-          Total Long Shots: {longTotal} <br />
-          Medium Percent: {longPercent.toFixed(1)}%
+        <br />
+        Total Long Shots: {longTotal} <br />
+        Long Percent: {longPercent.toFixed(1)}%
+      </div>
+      <div>
+        <br />
+        Total Shots: {overallTotal} 
       </div>
     </div>
   )

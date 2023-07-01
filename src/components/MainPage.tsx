@@ -105,7 +105,7 @@ const MainPage = () => {
           />
         }
         <br/>
-        <button onClick={ () => window.location.reload() }>Click to reload!</button>
+        <button onClick={ () => window.location.reload() }>Click to Reset</button>
       </div>
     </div>
   );

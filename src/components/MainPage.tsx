@@ -96,7 +96,7 @@ const MainPage = () => {
         />
       </div>
       <div className="grid-area submit"> 
-        <button onClick={handleClick}>Result</button>
+        <button onClick={handleClick}>Result</button> <br/>
         { showResult && 
           <Result 
             sState={shortState}
@@ -104,6 +104,7 @@ const MainPage = () => {
             lState={longState}
           />
         }
+        <br/>
         <button onClick={ () => window.location.reload() }>Click to reload!</button>
       </div>
     </div>

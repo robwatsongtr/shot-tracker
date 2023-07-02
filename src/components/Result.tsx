@@ -18,6 +18,7 @@ interface IResultState {
   lTotal: number
   lPercent: number
   oTotal: number
+  oPercent: number
   date: string
 }
 
@@ -31,12 +32,13 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
     lTotal: 0,
     lPercent: 0,
     oTotal: 0,
+    oPercent: 0,
     date: ''
   })
 
+  // isNaN is error check for divide by zero, ie make and total are both zero 
   const calcStats = (make: number, miss: number): [number, number] => {
     const total = make + miss
-    // isNaN is error check for divide by zero, ie make and total are both zero 
     const percent = isNaN( make / total ) ? 0 : (make / total) * 100
     return [ total, percent ]
   }
@@ -44,7 +46,12 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
   const [ shortTotal, shortPercent ] = calcStats(sState.shortMake, sState.shortMiss)
   const [ mediumTotal, mediumPercent] = calcStats(mState.mediumMake, mState.mediumMiss)
   const [ longTotal, longPercent ] = calcStats(lState.longMake, lState.longMiss);
+
   const overallTotal = shortTotal + mediumTotal + longTotal
+  const overallMakes = sState.shortMake + mState.mediumMake + lState.longMake
+  const overallPercent = isNaN(overallMakes / overallTotal) ? 
+    0 : (overallMakes / overallTotal) * 100
+
   const date = new Date()
   const formattedDate = date.toLocaleString(); 
 
@@ -57,10 +64,11 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
       lTotal: longTotal,
       lPercent: longPercent,
       oTotal: overallTotal,
+      oPercent: overallPercent,
       date: formattedDate
     })
     }, [shortTotal, shortPercent, mediumTotal, mediumPercent, 
-      longPercent, longTotal, overallTotal, formattedDate]
+      longPercent, longTotal, overallTotal, overallPercent, formattedDate]
   )
 
   return (
@@ -76,16 +84,17 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
       </div>
       <div>
         <br />
-        Total Long Shots: {resultState.lTotal} <br />
+        Total Long Shots: {resultState.lTotal} <br/>
         Long Percent: {resultState.lPercent.toFixed(1)}%
       </div>
       <div>
         <br />
-        Total Shots: {resultState.oTotal} 
+        Total Shots: {resultState.oTotal} <br/>
+        Percent: {resultState.oPercent.toFixed(1)}%
       </div>
       <div>
       <br/>
-       <h6>{resultState.date}</h6> 
+        <h5>{resultState.date}</h5> 
       </div>
     </div>
   )

@@ -119,7 +119,7 @@ const MainPage = () => {
           size="small" 
           onClick={ () => window.location.reload() }
         > 
-          Click to Reset
+          Reset
         </Button>
       </div>
     </div>

@@ -22,7 +22,7 @@ interface IResultState {
   lPercent: number
   oTotal: number
   oPercent: number
-  date: string
+  date: Date
 }
 
 const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
@@ -36,7 +36,7 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
     lPercent: 0,
     oTotal: 0,
     oPercent: 0,
-    date: ''
+    date: new Date()
   })
 
   // isNaN is error check for divide by zero, ie make and total are both zero 
@@ -55,10 +55,9 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
   const overallPercent = isNaN(overallMakes / overallTotal) ? 
     0 : (overallMakes / overallTotal) * 100
 
-  const date = new Date()
-  const formattedDate = date.toLocaleString(); 
-
   useEffect( () => {
+    const date = new Date()
+    
     setResultState({
       sTotal: shortTotal,
       sPercent: shortPercent,
@@ -68,18 +67,20 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
       lPercent: longPercent,
       oTotal: overallTotal,
       oPercent: overallPercent,
-      date: formattedDate
+      date: date
     })
     }, [shortTotal, shortPercent, mediumTotal, mediumPercent, 
-      longPercent, longTotal, overallTotal, overallPercent, formattedDate]
+      longPercent, longTotal, overallTotal, overallPercent ]
   )
 
   const saveSession = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     try {
       const docRef = await addDoc(collection(db, "sessions"), resultState) 
+      alert('Session Added to Database!')
       console.log('Document written with ID: ', docRef.id);
     } catch(err) {
+      alert('Error adding session to database')
       console.error('Error adding document: ', err);
     }
   }
@@ -107,7 +108,7 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
       </div>
       <div>
         <br/>
-        <h5>{resultState.date}</h5> 
+        <h5>{resultState.date.toLocaleString()}</h5> 
       </div>
         <br/>
       <Button 

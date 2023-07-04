@@ -94,7 +94,7 @@ const MainPage = () => {
         <Button 
           variant="contained" 
           onClick={handleClick}
-          size="small"
+          size="medium"
           color="secondary"
         >
           Result

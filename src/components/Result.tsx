@@ -3,6 +3,9 @@ import { ICounterStateShort } from './MainPage';
 import { ICounterStateMedium } from './MainPage';
 import { ICounterStateLong } from './MainPage';
 import { useState, useEffect } from 'react';
+import { Button } from '@mui/material';
+import { db } from '../firebase'
+import { collection, addDoc } from "firebase/firestore";
 
 interface ResultComponentProps {
   sState: ICounterStateShort
@@ -71,6 +74,16 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
       longPercent, longTotal, overallTotal, overallPercent, formattedDate]
   )
 
+  const saveSession = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    try {
+      const docRef = await addDoc(collection(db, "sessions"), resultState) 
+      console.log('Document written with ID: ', docRef.id);
+    } catch(err) {
+      console.error('Error adding document: ', err);
+    }
+  }
+
   return (
     <div>
       <div>
@@ -93,9 +106,17 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
         Percent: {resultState.oPercent.toFixed(1)}%
       </div>
       <div>
-      <br/>
+        <br/>
         <h5>{resultState.date}</h5> 
       </div>
+        <br/>
+      <Button 
+          variant="contained" 
+          onClick={saveSession}
+          size="small"
+      >
+        Save Session 
+      </Button>
     </div>
   )
 }

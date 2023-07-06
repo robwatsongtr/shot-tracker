@@ -22,16 +22,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f1f1f1; /* Example background color */
-  padding: 20px; /* Example padding */
-  
+  padding: 10; /* Example padding */
+  transform: scale(0.85); /* Reduce overall size by 25% */
   text-align: center
 }
 
 /* Styles for the text elements */
 
 .grid-area h4 {
-  margin: 20px 0; /* Adjust vertical spacing as needed */
+  margin: 10px 0; /* Adjust vertical spacing as needed */
 }
 
 .grid-area h2 {
@@ -39,7 +38,7 @@
 }
 
 .grid-area span {
-  margin: 20px 0; /* Adjust vertical spacing as needed */
+  margin: 10px 0; /* Adjust vertical spacing as needed */
 }
 
 /* Specify which grid area each item should occupy */
@@ -61,13 +60,13 @@
 
 
 .buttons button {
-  width: 3rem;
-  height: 3rem;
+  width: 2rem; /* Reduce button size proportionally */
+  height: 2rem; /* Reduce button size proportionally */
   border-radius: 50%;
   border: none;
-  margin: 0 2rem;
-  font-size: 2em;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), 0 8px 32px rgba(0, 0, 0, 0.1); /* Modify the rgba values to make the shadow darker */
+  margin: 0 0.5em; /* Adjust button margin as needed */
+  font-size: 1.25em; /* Reduce button font size */
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2), 0 6px 24px rgba(0, 0, 0, 0.1); /* Modify the rgba values to make the shadow darker */
   cursor: pointer;
 }
 

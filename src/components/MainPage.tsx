@@ -55,6 +55,14 @@ const MainPage = () => {
   return (
     <div className="container">
       <div className='grid-area short'>
+      <Button 
+          variant="contained" 
+          size="small" 
+          onClick={ () => window.location.reload() }
+        > 
+          Reset
+        </Button>
+        <br/>
         <Counter 
           title="Short Make" 
           count={shortState.shortMake} 
@@ -108,13 +116,7 @@ const MainPage = () => {
           />
         }
         <br/>
-        <Button 
-          variant="contained" 
-          size="small" 
-          onClick={ () => window.location.reload() }
-        > 
-          Reset
-        </Button>
+        
       </div>
     </div>
   );

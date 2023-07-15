@@ -2,7 +2,6 @@ import { db } from '../firebase'
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { useState, useEffect } from 'react';
 import './../App.css';
-import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const History = () => {

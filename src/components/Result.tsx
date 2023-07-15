@@ -13,7 +13,7 @@ interface ResultComponentProps {
   lState: ICounterStateLong
 }
 
-interface IResultState {
+export interface IResultState {
   sTotal: number
   sPercent: number
   mTotal: number

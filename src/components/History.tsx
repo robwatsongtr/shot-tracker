@@ -24,7 +24,7 @@ const History = () => {
     fetchData()
   }, [])
 
-  const renderSessions= () => {
+  const renderSessions = () => {
     return data.map( (item) =>
       <div key={item.id} className='session-item' >
         <br/>

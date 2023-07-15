@@ -5,7 +5,6 @@ import './../App.css';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-
 const History = () => {
   const [ data, setData ] = useState<any[]>([])
     
@@ -13,7 +12,7 @@ const History = () => {
     const fetchData = async () => {
       try {
         const querySnapshot = await getDocs( 
-          query(collection(db, 'sessions'), orderBy(`date`) )
+          query( collection(db, 'sessions'), orderBy(`date`) )
         )
         const documentsData = querySnapshot.docs.map( (doc) => doc.data() )
         setData(documentsData)
@@ -21,7 +20,7 @@ const History = () => {
         console.log(`Error: `, err)
       }
     }
-    
+
     fetchData()
   }, [])
 
@@ -31,13 +30,13 @@ const History = () => {
         <br/>
         <span>Date: {item.date.toDate().toLocaleString()}</span>
         <span>Total Short Shots: {item.sTotal}</span>
-        <span>Short Percent: {item.sPercent.toFixed(1)}</span>
+        <span>Short Percent: {item.sPercent.toFixed(1)}%</span>
         <span>Total Medium Shots: {item.mTotal}</span>
-        <span>Medium Percent: {item.mPercent.toFixed(1)}</span>
+        <span>Medium Percent: {item.mPercent.toFixed(1)}%</span>
         <span>Total Long Shots: {item.lTotal}</span>
-        <span>Long Percent: {item.lPercent.toFixed(1)}</span>
+        <span>Long Percent: {item.lPercent.toFixed(1)}%</span>
         <span>Total Shots: {item.oTotal}</span>
-        <span>Overall Percent: {item.oPercent.toFixed(1)}</span>
+        <span>Overall Percent: {item.oPercent.toFixed(1)}%</span>
         <br />
       </div>
     )

@@ -120,13 +120,7 @@ const MainPage = () => {
         }
         <br/> 
         <Link to="/history">
-          <Button 
-            variant="contained" 
-            size="small"
-            color="primary"
-          >
-            History
-          </Button> 
+          History 
         </Link>
         <br/>
       </div>

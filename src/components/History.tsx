@@ -46,13 +46,7 @@ const History = () => {
     <div className="session-container">
       <br/>
       <Link to="/">
-        <Button 
-          variant="contained" 
-          size="small"
-          color="primary"
-        >
-          Home
-        </Button> 
+          Main Page
       </Link>
       {renderSessions()}
     </div>

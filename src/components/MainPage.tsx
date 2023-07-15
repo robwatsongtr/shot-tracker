@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Counter } from './Counter';
 import Result from './Result'
 import { Button } from '@mui/material';
+import './../App.css';
+import { Link } from 'react-router-dom';
+
 
 export interface ICounterStateShort {
   shortMake: number
@@ -55,7 +58,7 @@ const MainPage = () => {
   return (
     <div className="container">
       <div className='grid-area short'>
-      <Button 
+        <Button 
           variant="contained" 
           size="small" 
           onClick={ () => window.location.reload() }
@@ -115,8 +118,17 @@ const MainPage = () => {
             lState={longState}
           />
         }
+        <br/> 
+        <Link to="/history">
+          <Button 
+            variant="contained" 
+            size="small"
+            color="primary"
+          >
+            History
+          </Button> 
+        </Link>
         <br/>
-        
       </div>
     </div>
   );

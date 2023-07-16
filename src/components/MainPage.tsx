@@ -119,7 +119,7 @@ const MainPage = () => {
           />
         }
         <br/> 
-        <Link to="/history">
+        <Link to="/history2">
           History 
         </Link>
         <br/>

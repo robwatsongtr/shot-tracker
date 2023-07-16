@@ -47,6 +47,7 @@ const History = () => {
       <Link to="/">
           Main Page
       </Link>
+      <br/>
       {renderSessions()}
     </div>
   )

@@ -88,22 +88,22 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
   return (
     <div>
       <div>
-        Total Short Shots: {resultState.sTotal} <br/>
+        Total Short Attempts: {resultState.sTotal} <br/>
         Short Percent: {resultState.sPercent.toFixed(1)}%
       </div>
       <div>
         <br/>
-        Total Medium Shots: {resultState.mTotal} <br/>
+        Total Medium Attempts: {resultState.mTotal} <br/>
         Medium Percent: {resultState.mPercent.toFixed(1)}%
       </div>
       <div>
         <br />
-        Total Long Shots: {resultState.lTotal} <br/>
+        Total Long Attempts: {resultState.lTotal} <br/>
         Long Percent: {resultState.lPercent.toFixed(1)}%
       </div>
       <div>
         <br />
-        Total Shots: {resultState.oTotal} <br/>
+        Total Attempts: {resultState.oTotal} <br/>
         Percent: {resultState.oPercent.toFixed(1)}%
       </div>
       <div>

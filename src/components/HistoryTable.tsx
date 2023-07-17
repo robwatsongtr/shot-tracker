@@ -74,13 +74,13 @@ const HistoryTable = () => {
             <thead>
               <tr>
                 <th>Date</th>
-                <th>Total Short Shots</th>
+                <th>Total Short Attempts</th>
                 <th>Short %</th>
-                <th>Total Medium Shots</th>
+                <th>Total Medium Attempts</th>
                 <th>Medium %</th>
-                <th>Total Long Shots</th>
+                <th>Total Long Attempts</th>
                 <th>Long %</th>
-                <th>Total Shots</th>
+                <th>Total Attempts</th>
                 <th>Overall %</th>
                 <th></th>
               </tr>

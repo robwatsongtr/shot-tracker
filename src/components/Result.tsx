@@ -76,7 +76,7 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
   const saveSession = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     try {
-      const docRef = await addDoc(collection(db, "sessions"), resultState) 
+      const docRef = await addDoc( collection(db, "sessions"), resultState ) 
       alert('Session Added to Database!')
       console.log('Document written with ID: ', docRef.id);
     } catch(err) {

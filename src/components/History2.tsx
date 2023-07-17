@@ -7,23 +7,30 @@ import { Link } from 'react-router-dom';
 const History2 = () => {
   const [ data, setData ] = useState<any[]>([])
     
-  useEffect( () => {
-    const fetchData = async () => {
-      try {
-        const querySnapshot = await getDocs( 
-          query( collection(db, 'sessions'), orderBy(`date`) )
-        )
-        const documentsData = querySnapshot.docs.map( (doc) => doc.data() )
-        setData(documentsData)
-      } catch (err) {
-        console.log(`Error: `, err)
-      }
+  const fetchData = async () => {
+    try {
+      const querySnapshot = await getDocs( 
+        query(collection(db, 'sessions'), orderBy(`date`))
+      )
+      // need to make sure id is saved with each document
+      const documentsData = querySnapshot.docs.map( (doc) => {
+        return { id: doc.id, ...doc.data() }
+      })
+      setData(documentsData)
+    } catch (err) {
+      console.log(`Error: `, err)
     }
+  }
 
+  const deleteDoc = (id: string) => {
+
+  }
+
+  useEffect( () => {
     fetchData()
   }, [])
 
-  
+
   const renderSessionsTable = () => {
     return data.map( (item) => 
       <tr key={item.id} >
@@ -36,10 +43,16 @@ const History2 = () => {
         <td>{item.lPercent.toFixed(1)}%</td>
         <td>{item.oTotal}</td>
         <td>{item.oPercent.toFixed(1)}%</td>
+        <td>
+          <button className="btn-delete" onClick={() => deleteDoc(item.id)} >
+            Delete
+          </button>
+        </td>
       </tr>
     )
   }
 
+  console.log(data)
  
   return (
     <div className="table-container">
@@ -60,6 +73,7 @@ const History2 = () => {
               <th>Long Percent</th>
               <th>Total Shots</th>
               <th>Overall Percent</th>
+              <th>Delete?</th>
             </tr>
           </thead>
           <tbody>

@@ -41,7 +41,7 @@ const HistoryTable = () => {
     fetchData()
   }, [])
 
-  const renderSessionsTable = () => {
+  const renderSessionsTableRow = () => {
     return data.map( (item) => 
       <tr key={item.id} >
         <td>{item.date.toDate().toLocaleString()}</td>
@@ -62,8 +62,6 @@ const HistoryTable = () => {
     )
   }
 
-  console.log(data)
- 
   return (
     <div className='session-container'>
        <br/>
@@ -88,7 +86,7 @@ const HistoryTable = () => {
               </tr>
             </thead>
             <tbody>
-              {renderSessionsTable()}
+              {renderSessionsTableRow()}
             </tbody>
           </table>
         </div>

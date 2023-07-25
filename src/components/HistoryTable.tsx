@@ -30,7 +30,7 @@ const HistoryTable = () => {
       const docRef = doc(db, 'sessions', id)
       await deleteDoc(docRef)
       // remove deleted item from array. Since it changes the data structure in 
-      // state, it will re-render the page and table. 
+      // state, React will re-render the page and table. 
       setData( data.filter( item => item.id !== id)) 
       alert(`Success deleting document: ${id}`)
     } catch(err) {

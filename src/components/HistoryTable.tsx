@@ -22,14 +22,16 @@ const HistoryTable = () => {
     }
   }
 
+  // Filter() method (line 34) creates a shallow copy of a portion of a given array, 
+  // filtered down to just the elements from the given array that pass the test 
+  // implemented by the provided function. 
   const deleteSession = async (id: string) => {
     try {
       const docRef = doc(db, 'sessions', id)
       await deleteDoc(docRef)
-      // The filter() method creates a shallow copy of a portion of a given array, 
-      // filtered down to just the elements from the given array that pass the test 
-      // implemented by the provided function.
-      setData( data.filter( item => item.id !== id)) // remove deleted item from array
+      // remove deleted item from array. Since it changes the data structure in 
+      // state, it will re-render the page and table. 
+      setData( data.filter( item => item.id !== id)) 
       alert(`Success deleting document: ${id}`)
     } catch(err) {
       alert(`Error deleting document ${id}: ${err} `)
@@ -39,7 +41,7 @@ const HistoryTable = () => {
 
   useEffect( () => {
     fetchData()
-  }, [])
+  }, [data])
 
   const renderSessionsTableRow = () => {
     return data.map( (item) => 

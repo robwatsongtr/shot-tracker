@@ -1,5 +1,3 @@
-// import firebase from 'firebase/app';
-
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
 const auth = getAuth()
 

@@ -1,13 +1,14 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth"
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 const auth = getAuth()
 
 const LoginPage = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    let unsubscribe = onAuthStateChanged(auth, (user)  => {
+    let unsubscribe = onAuthStateChanged( auth, (user) => {
       if (user) {
         navigate('/mainPage'); // Redirect to the dashboard after successful login
       }
@@ -27,10 +28,33 @@ const LoginPage = () => {
     }
   }
 
+  const pageStyle: React.CSSProperties = { 
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0', // Optional: Add background color
+    padding: '20px',
+    borderRadius: '8px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  };
+
+  
+
   return ( 
-    <div>
-      <h2>Login Page</h2>
-      <button onClick={handleGoogleSignIn}>Sign in with Google</button>
+    <div style={pageStyle}>
+      <h2>Shot Tracker Login Page</h2>
+      <br/>
+      <Button 
+        onClick={handleGoogleSignIn}
+        variant="contained" 
+        size="small" 
+      > 
+        Sign in 
+      </Button>
     </div>
   )
 }

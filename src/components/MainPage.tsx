@@ -4,7 +4,7 @@ import Result from './Result'
 import { Button } from '@mui/material';
 import './../App.css';
 import { Link } from 'react-router-dom';
-
+import LogoutButton from './LogoutButton';
 
 export interface ICounterStateShort {
   shortMake: number
@@ -58,9 +58,11 @@ const MainPage = () => {
   return (
     <div className="container">
       <div className='grid-area short'>
+        <LogoutButton />
+        <br/>
         <Button 
           variant="contained" 
-          size="small" 
+          size="medium" 
           onClick={ () => window.location.reload() }
         > 
           Reset

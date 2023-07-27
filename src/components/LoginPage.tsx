@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 const auth = getAuth()
 
-const Login = () => {
+const LoginPage = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -35,4 +35,4 @@ const Login = () => {
   )
 }
 
-export default Login 
+export default LoginPage 

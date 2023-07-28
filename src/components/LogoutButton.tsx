@@ -10,7 +10,7 @@ const LogoutButton = () => {
   useEffect(() => {
     let unsubscribe = onAuthStateChanged( auth, (user) => {
       if (!user) {
-        navigate('/'); // Redirect to the dashboard after successful login
+        navigate('/'); 
       }
     })
 

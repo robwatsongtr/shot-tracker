@@ -36,23 +36,17 @@ const LoginPage = () => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0', // Optional: Add background color
+    backgroundColor: '#f0f0f0', 
     padding: '20px',
     borderRadius: '8px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
   };
 
-  
-
   return ( 
     <div style={pageStyle}>
       <h2>Shot Tracker Login Page</h2>
       <br/>
-      <Button 
-        onClick={handleGoogleSignIn}
-        variant="contained" 
-        size="small" 
-      > 
+      <Button onClick={handleGoogleSignIn} variant="contained" size="small"> 
         Sign in 
       </Button>
     </div>

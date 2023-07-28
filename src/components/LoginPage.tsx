@@ -44,7 +44,7 @@ const LoginPage = () => {
 
   return ( 
     <div style={pageStyle}>
-      <h2>Shot Tracker Login Page</h2>
+      <h2>Shot Tracker Login</h2>
       <br/>
       <Button onClick={handleGoogleSignIn} variant="contained" size="small"> 
         Sign in 

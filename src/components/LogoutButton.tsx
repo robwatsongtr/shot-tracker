@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth'; 
 import { getAuth, onAuthStateChanged } from "firebase/auth"
+
 const auth = getAuth()
 
 const LogoutButton = () => {

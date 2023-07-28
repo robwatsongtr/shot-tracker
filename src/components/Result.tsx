@@ -6,6 +6,9 @@ import { useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import { db } from '../firebase'
 import { collection, addDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth"
+
+const auth = getAuth()
 
 interface ResultComponentProps {
   sState: ICounterStateShort
@@ -27,6 +30,10 @@ export interface IResultState {
 
 const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
 
+  // fix the <any> if you can, having a hell of a time
+  // finding the proper type for firebase user in docs or GPT 
+  const [ user, setUser ] = useState<any>(null) 
+
   const [ resultState, setResultState ] = useState<IResultState>({
     sTotal: 0,
     sPercent: 0,
@@ -38,8 +45,8 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
     oPercent: 0,
     date: new Date()
   })
-
-  // isNaN is error check for divide by zero, ie make and total are both zero 
+ 
+  // Stat Calculation area 
   const calcStats = (make: number, miss: number): [number, number] => {
     const total = make + miss
     const percent = isNaN( make / total ) ? 0 : (make / total) * 100
@@ -54,6 +61,7 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
   const overallMakes = sState.shortMake + mState.mediumMake + lState.longMake
   const overallPercent = isNaN(overallMakes / overallTotal) ? 
     0 : (overallMakes / overallTotal) * 100
+  //
 
   useEffect( () => {
     const date = new Date()
@@ -73,10 +81,29 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
       longPercent, longTotal, overallTotal, overallPercent ]
   )
 
+  // Firebase Auth Credential check
+  useEffect(() => {
+    // Check if a user is already logged in
+    const unsubscribe = onAuthStateChanged( auth, (user) => {
+      setUser(user);
+    });
+
+    // Unsubscribe from the auth observer when the component unmounts
+    return () => unsubscribe();
+  }, []);
+  
+
   const saveSession = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
+    if (!user) {
+      alert('Please log in to save the session.');
+      return;
+    }
     try {
-      const docRef = await addDoc( collection(db, "sessions"), resultState ) 
+      const docRef = await addDoc( collection(db, "sessions"), {
+        ...resultState, 
+        userId: user.uid, // include user UID in doc for identificaiton 
+      }) 
       alert('Session Added to Database!')
       console.log('Document written with ID: ', docRef.id);
     } catch(err) {
@@ -84,6 +111,8 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
       console.error('Error adding document: ', err);
     }
   }
+
+  console.log(`User: ${user}`)
 
   return (
     <div>

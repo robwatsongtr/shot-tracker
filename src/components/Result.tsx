@@ -31,7 +31,7 @@ export interface IResultState {
 const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
 
   // fix the <any> if you can, having a hell of a time
-  // finding the proper type for firebase user in docs or GPT 
+  // finding the proper type for Firebase user in docs or GPT 
   const [ user, setUser ] = useState<any>(null) 
 
   const [ resultState, setResultState ] = useState<IResultState>({
@@ -112,8 +112,7 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
     }
   }
 
-  console.log(`User: ${user}`)
-
+  
   return (
     <div>
       <div>

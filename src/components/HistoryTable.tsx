@@ -75,6 +75,7 @@ const HistoryTable = () => {
           <table className='table'>
             <thead>
               <tr>
+                {/* Table Headings */}
                 <th>Date</th>
                 <th>Total Short Attempts</th>
                 <th>Short %</th>

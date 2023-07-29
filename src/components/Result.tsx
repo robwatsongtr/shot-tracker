@@ -30,7 +30,7 @@ export interface IResultState {
 
 const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
 
-  // fix the <any> if you can, having a hell of a time
+  // fix the <any> if you can, having diffuclty 
   // finding the proper type for Firebase user in docs or GPT 
   const [ user, setUser ] = useState<any>(null) 
 
@@ -61,7 +61,7 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
   const overallMakes = sState.shortMake + mState.mediumMake + lState.longMake
   const overallPercent = isNaN(overallMakes / overallTotal) ? 
     0 : (overallMakes / overallTotal) * 100
-  //
+  // ---- 
 
   useEffect( () => {
     const date = new Date()
@@ -102,7 +102,7 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
     try {
       const docRef = await addDoc( collection(db, "sessions"), {
         ...resultState, 
-        userId: user.uid, 
+        userId: user.uid, // add user id to the doc 
       }) 
       alert('Session Added to Database!')
       console.log('Document written with ID: ', docRef.id);
@@ -112,7 +112,6 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
     }
   }
 
-  
   return (
     <div>
       <div>

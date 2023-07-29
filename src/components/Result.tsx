@@ -102,7 +102,7 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
     try {
       const docRef = await addDoc( collection(db, "sessions"), {
         ...resultState, 
-        userId: user.uid, // include user UID in doc for identificaiton 
+        userId: user.uid, 
       }) 
       alert('Session Added to Database!')
       console.log('Document written with ID: ', docRef.id);

@@ -5,8 +5,8 @@ import { ICounterStateLong } from './MainPage';
 import { useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import { db } from '../firebase'
-import { collection, addDoc } from "firebase/firestore";
-import { getAuth, onAuthStateChanged } from "firebase/auth"
+import { collection, addDoc,  } from "firebase/firestore";
+import { getAuth, onAuthStateChanged, User } from "firebase/auth"
 
 const auth = getAuth()
 
@@ -29,10 +29,7 @@ export interface IResultState {
 }
 
 const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
-
-  // fix the <any> if you can, having diffuclty 
-  // finding the proper type for Firebase user in docs or GPT 
-  const [ user, setUser ] = useState<any>(null) 
+  const [ user, setUser ] = useState<User | null>(null) 
 
   const [ resultState, setResultState ] = useState<IResultState>({
     sTotal: 0,

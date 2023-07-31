@@ -10,6 +10,7 @@ const HistoryTable = () => {
   const [ data, setData ] = useState<any[]>([])
   
   const fetchData = async () => {
+    console.log("reading db")
     try {
       const querySnapshot = await getDocs( 
         query(collection(db, 'sessions'), orderBy(`date`))

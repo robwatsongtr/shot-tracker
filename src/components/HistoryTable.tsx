@@ -5,8 +5,8 @@ import './../App.css';
 import { Link } from 'react-router-dom';
 
 const HistoryTable = () => {
-  // Sorry to keep thi but havig a hell of a time
-  // getting an interface to work with how Firestore stores the date
+  // Don't want this <any> but having a hard time getting an 
+  // interface to work with how Firestore stores the date
   const [ data, setData ] = useState<any[]>([])
   
   const fetchData = async () => {
@@ -21,6 +21,7 @@ const HistoryTable = () => {
       setData(documentsData)
     } catch (err) {
       console.error(`Error: `, err)
+      alert('Error reading from database. Check console.')
     }
   }
 
@@ -43,7 +44,7 @@ const HistoryTable = () => {
 
   useEffect( () => {
     fetchData()
-  }, [data])
+  }, [])
 
   const renderSessionsTableRow = () => {
     return data.map( (item) => 

@@ -13,7 +13,7 @@ const HistoryTable = () => {
     console.log("reading db")
     try {
       const querySnapshot = await getDocs( 
-        query(collection(db, 'sessions'), orderBy(`date`))
+        query( collection(db, 'sessions'), orderBy(`date`) )
       )
       // need to make sure id is saved with each document
       const documentsData = querySnapshot.docs.map( (doc) => {
@@ -26,18 +26,16 @@ const HistoryTable = () => {
     }
   }
 
-  // Filter() method (line 34) creates a shallow copy of a portion of a given array, 
+  // Filter() method creates a shallow copy of a portion of a given array, 
   // filtered down to just the elements from the given array that pass the test 
   // implemented by the provided function. 
   const deleteSession = async (id: string) => {
     try {
       const docRef = doc(db, 'sessions', id)
       await deleteDoc(docRef)
-      // remove deleted item from array. Since it changes the data structure in 
-      // state, React will re-render the page and table. 
-      setData( data.filter( item => item.id !== id)) 
+      setData( data.filter( item => item.id !== id) ) 
       alert(`Success deleting document: ${id}`)
-    } catch(err) {
+    } catch (err) {
       alert(`Error deleting document ${id}: ${err} `)
       console.error(`Error deleting document ${id}: ${err}`)
     }
@@ -45,7 +43,7 @@ const HistoryTable = () => {
 
   useEffect( () => {
     fetchData()
-  }, [])
+  }, []) 
 
   const renderSessionsTableRow = () => {
     return data.map( (item) => 
@@ -79,7 +77,6 @@ const HistoryTable = () => {
           <table className='table'>
             <thead>
               <tr>
-                {/* Table Headings */}
                 <th>Date</th>
                 <th>Total Short Attempts</th>
                 <th>Short %</th>

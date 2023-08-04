@@ -7,15 +7,20 @@ interface CounterProps {
   title: string;
   count?: number;
   onUpdate?: (count: number) => void;
+  reset: boolean
 }
 
-export const Counter: React.FC<CounterProps> = ({ title, count = 0, onUpdate }) => {
+export const Counter: React.FC<CounterProps> = ({ title, count = 0, onUpdate, reset }) => {
   const [counter, setCounter] = useState(count);
 
-  useEffect(() => {
+  useEffect( () => {
     onUpdate?.(counter)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counter])
+
+  useEffect( () => {
+    if (reset) setCounter(0);
+  }, [reset]);
 
   const increment = (): void => {
     const newCounter = counter + 1;

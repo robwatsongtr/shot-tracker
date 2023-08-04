@@ -8,11 +8,9 @@ const auth = getAuth()
 const LogoutButton = () => {
   const navigate = useNavigate()
 
-  useEffect(() => {
+  useEffect( () => {
     let unsubscribe = onAuthStateChanged( auth, (user) => {
-      if (!user) {
-        navigate('/'); 
-      }
+      if (!user) navigate('/'); 
     })
 
     return () => unsubscribe()

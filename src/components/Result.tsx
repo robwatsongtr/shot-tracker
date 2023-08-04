@@ -5,7 +5,7 @@ import { ICounterStateLong } from './MainPage';
 import { useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import { db } from '../firebase'
-import { collection, addDoc,  } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth"
 
 const auth = getAuth()

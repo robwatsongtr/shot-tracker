@@ -1,7 +1,8 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth"
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Button } from '@mui/material'
+
 const auth = getAuth()
 
 const LoginPage = () => {
@@ -9,9 +10,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     let unsubscribe = onAuthStateChanged( auth, (user) => {
-      if (user) {
-        navigate('/mainPage'); // Redirect to the dashboard after successful login
-      }
+      if (user) navigate('/mainPage'); // Redirect to the dashboard after successful login
     })
 
     return () => unsubscribe()

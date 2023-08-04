@@ -57,11 +57,11 @@ const MainPage = () => {
   };
 
   const resetStateAndCounters = () => {
-    setShortState({ shortMake: 0, shortMiss: 0 });
-    setMediumState({ mediumMake: 0, mediumMiss: 0 });
-    setLongState({ longMake: 0, longMiss: 0 });
-    setResetCounters(true);
-    setShowResult(false);
+    setShortState({ shortMake: 0, shortMiss: 0 })
+    setMediumState({ mediumMake: 0, mediumMiss: 0 })
+    setLongState({ longMake: 0, longMiss: 0 })
+    setResetCounters(true)
+    setShowResult(false)
   };
 
   return (

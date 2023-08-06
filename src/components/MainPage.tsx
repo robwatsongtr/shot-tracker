@@ -1,44 +1,22 @@
-import React, { useState } from 'react';
 import { Counter } from './Counter';
 import Result from './Result'
 import { Button } from '@mui/material';
 import './../App.css';
 import { Link } from 'react-router-dom';
 import LogoutButton from './LogoutButton';
-
-export interface ICounterStateShort {
-  shortMake: number
-  shortMiss: number
-}
-
-export interface ICounterStateMedium {
-  mediumMake: number
-  mediumMiss: number 
-}
-
-export interface ICounterStateLong {
-  longMake: number
-  longMiss: number 
-}
+import { ICounterStateShort } from './useMainPageStates';
+import { ICounterStateMedium } from './useMainPageStates';
+import { ICounterStateLong } from './useMainPageStates';
+import { useMainPageStates } from './useMainPageStates'
 
 const MainPage = () => {
-  const [ showResult, setShowResult ] = useState(false)
-  const [ resetCounters, setResetCounters ] = useState(false);
-
-  const [ shortState, setShortState ] = useState<ICounterStateShort>({
-    shortMake: 0,
-    shortMiss: 0
-  })
-
-  const [ mediumState, setMediumState ] = useState<ICounterStateMedium>({
-    mediumMake: 0,
-    mediumMiss: 0
-  })
-
-  const [ longState, setLongState ] = useState<ICounterStateLong>({
-    longMake: 0,
-    longMiss: 0
-  })
+  const {
+    showResult, setShowResult,
+    resetCounters, setResetCounters,
+    shortState, setShortState,
+    mediumState, setMediumState,
+    longState, setLongState
+  } = useMainPageStates()
 
   const updateShortState = (newState: ICounterStateShort) => {
     setShortState(newState)

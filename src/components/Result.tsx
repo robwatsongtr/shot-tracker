@@ -1,7 +1,7 @@
 import './../App.css';
-import { ICounterStateShort } from './MainPage';
-import { ICounterStateMedium } from './MainPage';
-import { ICounterStateLong } from './MainPage';
+import { ICounterStateShort } from './useMainPageStates';
+import { ICounterStateMedium } from './useMainPageStates';
+import { ICounterStateLong } from './useMainPageStates';
 import { useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import { db } from '../firebase'

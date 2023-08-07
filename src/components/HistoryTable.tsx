@@ -14,6 +14,9 @@ const HistoryTable = () => {
   const [ user, setUser ] = useState<User | null>(null) 
   const displayName = user?.displayName
   const email = user?.email
+  const uid = user?.uid
+
+  console.log(`User ID: ${uid}`)
   
   const fetchData = async () => {
     console.log("reading db")
@@ -25,7 +28,8 @@ const HistoryTable = () => {
       const documentsData = querySnapshot.docs.map( (doc) => {
         return { id: doc.id, ...doc.data() }
       })
-      setData(documentsData)
+      // TO DO, get rid of any like above in data state 
+      setData( documentsData.filter( (doc: any) => doc.userId === uid ))
     } catch (err) {
       console.error(`Error: `, err)
       alert('Error reading from database. Check console.')

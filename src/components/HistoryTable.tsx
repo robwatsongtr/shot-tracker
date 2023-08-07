@@ -40,9 +40,6 @@ const HistoryTable = () => {
     fetchData()
   }, [uid] )
 
-  // Filter() method creates a shallow copy of a portion of a given array, 
-  // filtered down to just the elements from the given array that pass the test 
-  // implemented by the provided function. 
   const deleteSession = async (id: string) => {
     try {
       const docRef = doc(db, 'sessions', id)

@@ -1,4 +1,3 @@
-// custom state hook
 import { useState } from 'react';
 
 export interface ICounterStateShort {
@@ -42,5 +41,4 @@ export const useMainPageStates = () => {
     mediumState, setMediumState,
     longState, setLongState
   }
-
 }

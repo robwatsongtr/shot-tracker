@@ -30,6 +30,7 @@ export interface IResultState {
 
 const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
   const [ user, setUser ] = useState<User | null>(null) 
+  const email = user?.email
 
   const [ resultState, setResultState ] = useState<IResultState>({
     sTotal: 0,
@@ -78,7 +79,6 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
       longPercent, longTotal, overallTotal, overallPercent ]
   )
 
-  // Firebase Auth Credential check
   useEffect(() => {
     // Check if a user is already logged in
     const unsubscribe = onAuthStateChanged( auth, (user) => {
@@ -89,7 +89,6 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
     return () => unsubscribe();
   }, []);
   
-
   const saveSession = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     if (!user) {
@@ -99,7 +98,7 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
     try {
       const docRef = await addDoc( collection(db, "sessions"), {
         ...resultState, 
-        userId: user.uid, // add user id to the doc 
+        userId: user.uid, 
       }) 
       alert('Session Added to Database!')
       console.log('Document written with ID: ', docRef.id);
@@ -111,6 +110,7 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
 
   return (
     <div>
+      <h5> {email} </h5> <br/>
       <div>
         Total Short Attempts: {resultState.sTotal} <br/>
         Short Percent: {resultState.sPercent.toFixed(1)}%

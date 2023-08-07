@@ -3,11 +3,17 @@ import { collection, getDocs, query, orderBy, doc, deleteDoc } from "firebase/fi
 import { useState, useEffect } from 'react';
 import './../App.css';
 import { Link } from 'react-router-dom';
+import { getAuth, onAuthStateChanged, User } from "firebase/auth"
+
+const auth = getAuth()
 
 const HistoryTable = () => {
   // Don't want this <any> but having a hard time getting an 
   // interface to work with how Firestore stores the date
   const [ data, setData ] = useState<any[]>([])
+  const [ user, setUser ] = useState<User | null>(null) 
+  const displayName = user?.displayName
+  const email = user?.email
   
   const fetchData = async () => {
     console.log("reading db")
@@ -41,7 +47,15 @@ const HistoryTable = () => {
     }
   }
 
-  useEffect( () => {
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged( auth, (user) => {
+      setUser(user);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
     fetchData()
   }, []) 
 
@@ -68,10 +82,12 @@ const HistoryTable = () => {
 
   return (
     <div className='session-container'>
-       <br/>
+      <br/>
         <Link to="/">
             Main Page
         </Link>
+      <br/> {displayName} <br/>
+      <h5> {email} </h5> 
       <div className="table-container">
         <div>
           <table className='table'>

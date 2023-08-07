@@ -12,29 +12,33 @@ const HistoryTable = () => {
   // interface to work with how Firestore stores the date
   const [ data, setData ] = useState<any[]>([])
   const [ user, setUser ] = useState<User | null>(null) 
+  const [ uid, setUid] = useState<string | null>(null)
   const displayName = user?.displayName
   const email = user?.email
-  const uid = user?.uid
-
-  console.log(`User ID: ${uid}`)
-  
-  const fetchData = async () => {
-    console.log("reading db")
-    try {
-      const querySnapshot = await getDocs( 
-        query( collection(db, 'sessions'), orderBy(`date`) )
-      )
-      // need to make sure id is saved with each document
-      const documentsData = querySnapshot.docs.map( (doc) => {
-        return { id: doc.id, ...doc.data() }
-      })
-      // TO DO, get rid of any like above in data state 
-      setData( documentsData.filter( (doc: any) => doc.userId === uid ))
-    } catch (err) {
-      console.error(`Error: `, err)
-      alert('Error reading from database. Check console.')
+ 
+  useEffect( () => {
+    const fetchData = async () => {
+      console.log("reading db")
+      try {
+        const querySnapshot = await getDocs( 
+          query( collection(db, 'sessions'), orderBy(`date`) )
+        )
+        // need to make sure id is saved with each document
+        const documentsData = querySnapshot.docs.map( (doc) => {
+          return { id: doc.id, ...doc.data() }
+        })
+        // Filter on user ID. TO DO, get rid of <any> like above in data state 
+        if (uid) {
+          setData( documentsData.filter( (doc: any) => doc.userId === uid )) 
+        }
+      } catch (err) {
+        console.error(`Error: `, err)
+        alert('Error reading from database. Check console.')
+      }
     }
-  }
+
+    fetchData()
+  }, [uid] )
 
   // Filter() method creates a shallow copy of a portion of a given array, 
   // filtered down to just the elements from the given array that pass the test 
@@ -54,14 +58,11 @@ const HistoryTable = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged( auth, (user) => {
       setUser(user);
+      setUid( user ? user.uid : null )
     });
 
     return () => unsubscribe();
   }, []);
-
-  useEffect(() => {
-    fetchData()
-  }, []) 
 
   const renderSessionsTableRow = () => {
     return data.map( (item) => 

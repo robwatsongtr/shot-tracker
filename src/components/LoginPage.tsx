@@ -2,7 +2,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material'
-import { isError } from "util";
+
 
 const auth = getAuth()
 

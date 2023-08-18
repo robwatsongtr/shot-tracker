@@ -103,7 +103,7 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
       alert('Session Added to Database!')
       console.log('Document written with ID: ', docRef.id);
     } catch(err) {
-      alert('Error adding session to database')
+      alert(`Error adding session to database: ${err}`)
       console.error('Error adding document: ', err);
     }
   }

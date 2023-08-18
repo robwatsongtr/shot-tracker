@@ -2,6 +2,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material'
+import { isError } from "util";
 
 const auth = getAuth()
 
@@ -22,7 +23,7 @@ const LoginPage = () => {
       await signInWithPopup(auth, provider);
       navigate('/mainPage')
     } catch (error) {
-      alert('Error signing in with Google')
+      alert(`Error signing in with Google: ${error}`)
       console.error('Error signing in with Google:', error);
     }
   }

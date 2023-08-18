@@ -21,7 +21,7 @@ const LogoutButton = () => {
       await signOut(auth); 
       navigate('/'); 
     } catch (error) {
-      alert('Error signing out')
+      alert(`Error signing out: ${error}`)
       console.error('Error signing out:', error);
     }
   }

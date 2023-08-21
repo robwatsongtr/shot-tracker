@@ -47,7 +47,7 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
   // Stat Calculation area 
   const calcStats = (make: number, miss: number): [number, number] => {
     const total = make + miss
-    const percent = isNaN( make / total ) ? 0 : (make / total) * 100
+    const percent = isNaN(make / total) ? 0 : (make / total) * 100
     return [ total, percent ]
   }
   
@@ -99,7 +99,7 @@ const Result: React.FC<ResultComponentProps> = ({ sState, mState, lState }) => {
       const docRef = await addDoc( collection(db, "sessions"), {
         ...resultState, 
         userId: user.uid, 
-      }) 
+      } ) 
       alert('Session Added to Database!')
       console.log('Document written with ID: ', docRef.id);
     } catch(err) {

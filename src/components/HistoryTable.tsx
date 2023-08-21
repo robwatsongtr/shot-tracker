@@ -13,6 +13,7 @@ const HistoryTable = () => {
   const [ data, setData ] = useState<any[]>([])
   const [ user, setUser ] = useState<User | null>(null) 
   const [ uid, setUid] = useState<string | null>(null)
+
   const displayName = user?.displayName
   const email = user?.email
  
@@ -32,8 +33,8 @@ const HistoryTable = () => {
           setData( documentsData.filter( (doc: any) => doc.userId === uid )) 
         }
       } catch (err) {
-        console.error(`Error: `, err)
-        alert('Error reading from database. Check console.')
+        console.error(`Error reading from database: `, err)
+        alert(`Error reading from database: ${err}`)
       }
     }
 
